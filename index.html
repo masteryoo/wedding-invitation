@@ -17,6 +17,20 @@
 </head>
 <body>
 
+    <!-- Floating Petals -->
+    <div class="petals" aria-hidden="true">
+        <div class="petal petal--1"></div>
+        <div class="petal petal--2"></div>
+        <div class="petal petal--3"></div>
+        <div class="petal petal--4"></div>
+        <div class="petal petal--5"></div>
+        <div class="petal petal--6"></div>
+        <div class="petal petal--7"></div>
+        <div class="petal petal--8"></div>
+        <div class="petal petal--9"></div>
+        <div class="petal petal--10"></div>
+    </div>
+
     <!-- Language Toggle -->
     <button class="lang-toggle" id="langToggle" aria-label="Switch language">
         <span class="lang-toggle__label" data-ko="EN" data-en="KR">EN</span>
@@ -24,6 +38,14 @@
 
     <!-- ====== 1. HERO ====== -->
     <header class="hero" id="hero">
+        <!-- Palm tree silhouettes -->
+        <svg class="hero__palm hero__palm--left" viewBox="0 0 120 380" fill="#3A3028" xmlns="http://www.w3.org/2000/svg">
+            <path d="M60 380V180c0-10-2-20-8-28-12-16-35-22-52-18 20-15 45-12 58 2 2-18-5-38-22-52 22 8 38 30 35 55 15-15 38-22 58-15-18 8-35 22-40 42 18-8 40-5 55 8-20-2-40 5-52 20C78 208 68 230 65 260c-2 20-3 60-5 120z"/>
+        </svg>
+        <svg class="hero__palm hero__palm--right" viewBox="0 0 120 380" fill="#3A3028" xmlns="http://www.w3.org/2000/svg">
+            <path d="M60 380V180c0-10-2-20-8-28-12-16-35-22-52-18 20-15 45-12 58 2 2-18-5-38-22-52 22 8 38 30 35 55 15-15 38-22 58-15-18 8-35 22-40 42 18-8 40-5 55 8-20-2-40 5-52 20C78 208 68 230 65 260c-2 20-3 60-5 120z"/>
+        </svg>
+
         <div class="hero__content">
             <p class="hero__date">
                 <span lang="ko">2026. 05. 02</span>
@@ -31,7 +53,7 @@
             </p>
 
             <div class="hero__photo">
-                <img src="images/hero/01.jpg" alt="승준 & 은희">
+                <img src="images/hero/00.jpg" alt="승준 & 은희">
             </div>
 
             <h1 class="hero__names">
@@ -49,6 +71,13 @@
         </div>
     </header>
 
+    <!-- Wave transition from hero to content -->
+    <div class="wave-transition" aria-hidden="true" style="background: #8BBDD4;">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0,0 C360,80 1080,80 1440,0 L1440,80 L0,80 Z" fill="#FFFCF7"/>
+        </svg>
+    </div>
+
     <main>
 
         <!-- ====== 2. 인사말 (GREETING) ====== -->
@@ -61,20 +90,17 @@
 
                 <div class="greeting__message reveal">
                     <p lang="ko">
-                        부모님, 친구들, 그리고 소중한 분들의 사랑 덕분에<br>
-                        지금까지의 하루하루가 행복했고, 감사했습니다.<br>
-                        앞으로의 기쁜 날도, 그렇지 않은 날도<br>
-                        함께 온전히 살아가고 싶습니다.<br>
+                        많은 관심과 사랑 덕분에 하루하루 걸어올 수 있었어요.<br>
+                        기쁜 날도, 그렇지 않은 날도,<br>
+                        함께 온전히 살아가는 것이 삶이라 믿기에 —<br>
                         다음 계절의 첫 페이지를,<br>
                         여러분과 함께 쓰고 싶습니다.
                     </p>
                     <p class="greeting__message-en" lang="en">
-                        Thanks to the love of our parents, friends,<br>
-                        and so many dear people —<br>
-                        every day until now has been happy,<br>
-                        and we are grateful.<br>
-                        The joyful days ahead, and the harder ones too —<br>
-                        we want to live them fully, together.<br>
+                        Thanks to so much care and love,<br>
+                        we were able to walk through each day to get here.<br>
+                        We believe life is about living fully together —<br>
+                        the joyful days and the harder ones.<br>
                         We want to write the first page<br>
                         of our next season with you.
                     </p>
@@ -118,6 +144,15 @@
                 </div>
             </div>
         </section>
+
+        <!-- Section Divider -->
+        <div class="section-divider" aria-hidden="true">
+            <span class="section-divider__line"></span>
+            <svg class="section-divider__icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 34V16c0-2-.5-4-2-5.5-2.5-3-7-4.5-10.5-3.5 4-3 9-2.5 11.5.5.5-3.5-1-7.5-4.5-10.5 4.5 1.5 7.5 6 7 11 3-3 7.5-4.5 11.5-3-3.5 1.5-7 4.5-8 8.5 3.5-1.5 8-1 11 1.5-4-.5-8 1-10.5 4C21 22 19.5 26 19 30c-.3 2-.5 3-1 4z" fill="currentColor" opacity="0.5"/>
+            </svg>
+            <span class="section-divider__line"></span>
+        </div>
 
         <!-- ====== 3. CALENDAR ====== -->
         <section class="calendar" id="calendar">
@@ -163,6 +198,15 @@
             </div>
         </section>
 
+        <!-- Section Divider -->
+        <div class="section-divider" aria-hidden="true">
+            <span class="section-divider__line"></span>
+            <svg class="section-divider__icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 34V16c0-2-.5-4-2-5.5-2.5-3-7-4.5-10.5-3.5 4-3 9-2.5 11.5.5.5-3.5-1-7.5-4.5-10.5 4.5 1.5 7.5 6 7 11 3-3 7.5-4.5 11.5-3-3.5 1.5-7 4.5-8 8.5 3.5-1.5 8-1 11 1.5-4-.5-8 1-10.5 4C21 22 19.5 26 19 30c-.3 2-.5 3-1 4z" fill="currentColor" opacity="0.5"/>
+            </svg>
+            <span class="section-divider__line"></span>
+        </div>
+
         <!-- ====== 4. GALLERY ====== -->
         <section class="gallery" id="gallery">
             <div class="gallery__container">
@@ -179,7 +223,7 @@
                         <figure class="gallery__slide gallery__slide--portrait" data-index="0">
                             <img src="images/gallery/01.jpg" alt="Photo 1" loading="lazy">
                         </figure>
-                        <figure class="gallery__slide gallery__slide--wide" data-index="1">
+                        <figure class="gallery__slide gallery__slide--portrait" data-index="1">
                             <img src="images/gallery/02.jpg" alt="Photo 2" loading="lazy">
                         </figure>
                         <figure class="gallery__slide gallery__slide--portrait" data-index="2">
@@ -191,14 +235,59 @@
                         <figure class="gallery__slide gallery__slide--portrait" data-index="4">
                             <img src="images/gallery/05.jpg" alt="Photo 5" loading="lazy">
                         </figure>
-                        <figure class="gallery__slide gallery__slide--wide" data-index="5">
+                        <figure class="gallery__slide gallery__slide--portrait" data-index="5">
                             <img src="images/gallery/06.jpg" alt="Photo 6" loading="lazy">
                         </figure>
-                        <figure class="gallery__slide gallery__slide--portrait" data-index="6">
+                        <figure class="gallery__slide gallery__slide--wide" data-index="6">
                             <img src="images/gallery/07.jpg" alt="Photo 7" loading="lazy">
                         </figure>
                         <figure class="gallery__slide gallery__slide--wide" data-index="7">
                             <img src="images/gallery/08.jpg" alt="Photo 8" loading="lazy">
+                        </figure>
+                        <figure class="gallery__slide gallery__slide--portrait" data-index="8">
+                            <img src="images/gallery/09.jpg" alt="Photo 9" loading="lazy">
+                        </figure>
+                        <figure class="gallery__slide gallery__slide--wide" data-index="9">
+                            <img src="images/gallery/10.jpg" alt="Photo 10" loading="lazy">
+                        </figure>
+                        <figure class="gallery__slide gallery__slide--wide" data-index="10">
+                            <img src="images/gallery/11.jpg" alt="Photo 11" loading="lazy">
+                        </figure>
+                        <figure class="gallery__slide gallery__slide--wide" data-index="11">
+                            <img src="images/gallery/12.jpg" alt="Photo 12" loading="lazy">
+                        </figure>
+                        <figure class="gallery__slide gallery__slide--wide" data-index="12">
+                            <img src="images/gallery/13.jpg" alt="Photo 13" loading="lazy">
+                        </figure>
+                        <figure class="gallery__slide gallery__slide--wide" data-index="13">
+                            <img src="images/gallery/14.jpg" alt="Photo 14" loading="lazy">
+                        </figure>
+                        <figure class="gallery__slide gallery__slide--wide" data-index="14">
+                            <img src="images/gallery/15.jpg" alt="Photo 15" loading="lazy">
+                        </figure>
+                        <figure class="gallery__slide gallery__slide--wide" data-index="15">
+                            <img src="images/gallery/16.jpg" alt="Photo 16" loading="lazy">
+                        </figure>
+                        <figure class="gallery__slide gallery__slide--wide" data-index="16">
+                            <img src="images/gallery/17.jpg" alt="Photo 17" loading="lazy">
+                        </figure>
+                        <figure class="gallery__slide gallery__slide--wide" data-index="17">
+                            <img src="images/gallery/18.jpg" alt="Photo 18" loading="lazy">
+                        </figure>
+                        <figure class="gallery__slide gallery__slide--portrait" data-index="18">
+                            <img src="images/gallery/19.jpg" alt="Photo 19" loading="lazy">
+                        </figure>
+                        <figure class="gallery__slide gallery__slide--wide" data-index="19">
+                            <img src="images/gallery/20.jpg" alt="Photo 20" loading="lazy">
+                        </figure>
+                        <figure class="gallery__slide gallery__slide--portrait" data-index="20">
+                            <img src="images/gallery/21.jpg" alt="Photo 21" loading="lazy">
+                        </figure>
+                        <figure class="gallery__slide gallery__slide--wide" data-index="21">
+                            <img src="images/gallery/22.jpg" alt="Photo 22" loading="lazy">
+                        </figure>
+                        <figure class="gallery__slide gallery__slide--wide" data-index="22">
+                            <img src="images/gallery/23.jpg" alt="Photo 23" loading="lazy">
                         </figure>
                     </div>
                     <button class="gallery__nav gallery__nav--next" id="galleryNext" aria-label="Next photo">
@@ -209,11 +298,20 @@
                 <div class="gallery__controls reveal">
                     <div class="gallery__dots" id="galleryDots"></div>
                     <p class="gallery__counter">
-                        <span id="galleryCurrentSlide">1</span> / <span id="galleryTotalSlides">8</span>
+                        <span id="galleryCurrentSlide">1</span> / <span id="galleryTotalSlides">23</span>
                     </p>
                 </div>
             </div>
         </section>
+
+        <!-- Section Divider -->
+        <div class="section-divider" aria-hidden="true">
+            <span class="section-divider__line"></span>
+            <svg class="section-divider__icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 34V16c0-2-.5-4-2-5.5-2.5-3-7-4.5-10.5-3.5 4-3 9-2.5 11.5.5.5-3.5-1-7.5-4.5-10.5 4.5 1.5 7.5 6 7 11 3-3 7.5-4.5 11.5-3-3.5 1.5-7 4.5-8 8.5 3.5-1.5 8-1 11 1.5-4-.5-8 1-10.5 4C21 22 19.5 26 19 30c-.3 2-.5 3-1 4z" fill="currentColor" opacity="0.5"/>
+            </svg>
+            <span class="section-divider__line"></span>
+        </div>
 
         <!-- ====== 5. 오시는 길 (LOCATION) ====== -->
         <section class="location" id="location">
@@ -295,6 +393,15 @@
             </div>
         </section>
 
+        <!-- Section Divider -->
+        <div class="section-divider" aria-hidden="true">
+            <span class="section-divider__line"></span>
+            <svg class="section-divider__icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 34V16c0-2-.5-4-2-5.5-2.5-3-7-4.5-10.5-3.5 4-3 9-2.5 11.5.5.5-3.5-1-7.5-4.5-10.5 4.5 1.5 7.5 6 7 11 3-3 7.5-4.5 11.5-3-3.5 1.5-7 4.5-8 8.5 3.5-1.5 8-1 11 1.5-4-.5-8 1-10.5 4C21 22 19.5 26 19 30c-.3 2-.5 3-1 4z" fill="currentColor" opacity="0.5"/>
+            </svg>
+            <span class="section-divider__line"></span>
+        </div>
+
         <!-- ====== 6. 마음 전하실 곳 (GIFT / ACCOUNTS) ====== -->
         <section class="accounts" id="accounts">
             <div class="accounts__container">
@@ -365,6 +472,15 @@
                 </div>
             </div>
         </section>
+
+        <!-- Section Divider -->
+        <div class="section-divider" aria-hidden="true">
+            <span class="section-divider__line"></span>
+            <svg class="section-divider__icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 34V16c0-2-.5-4-2-5.5-2.5-3-7-4.5-10.5-3.5 4-3 9-2.5 11.5.5.5-3.5-1-7.5-4.5-10.5 4.5 1.5 7.5 6 7 11 3-3 7.5-4.5 11.5-3-3.5 1.5-7 4.5-8 8.5 3.5-1.5 8-1 11 1.5-4-.5-8 1-10.5 4C21 22 19.5 26 19 30c-.3 2-.5 3-1 4z" fill="currentColor" opacity="0.5"/>
+            </svg>
+            <span class="section-divider__line"></span>
+        </div>
 
         <!-- ====== 7. RSVP ====== -->
         <section class="rsvp" id="rsvp">
