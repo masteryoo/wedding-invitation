@@ -382,21 +382,34 @@ document.addEventListener('DOMContentLoaded', () => {
             const ics = [
                 'BEGIN:VCALENDAR',
                 'VERSION:2.0',
+                'PRODID:-//Wedding//EN',
+                'CALSCALE:GREGORIAN',
+                'METHOD:PUBLISH',
                 'BEGIN:VEVENT',
-                'DTSTART:' + EVENT_START,
-                'DTEND:' + EVENT_END,
+                'DTSTART;TZID=Asia/Seoul:20260502T173000',
+                'DTEND;TZID=Asia/Seoul:20260502T203000',
                 'SUMMARY:' + EVENT_TITLE,
                 'LOCATION:' + EVENT_LOCATION,
                 'DESCRIPTION:청첩장: ' + INVITE_URL,
+                'STATUS:CONFIRMED',
                 'END:VEVENT',
                 'END:VCALENDAR'
             ].join('\r\n');
             const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = 'wedding.ics';
-            link.click();
-            URL.revokeObjectURL(link.href);
+            const url = URL.createObjectURL(blob);
+            // Use window.open for better iOS compatibility
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+            if (isIOS) {
+                window.open(url, '_blank');
+            } else {
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'wedding.ics';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
         });
     }
 
