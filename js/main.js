@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (bgMusic && musicToggle) {
         bgMusic.volume = 0.2;
+        let userPaused = false;
 
         function setPlaying(playing) {
             if (playing) {
@@ -45,21 +46,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // If browser blocked autoplay, start on first user interaction
         function startOnInteraction() {
-            if (bgMusic.paused) {
+            if (bgMusic.paused && !userPaused) {
                 setPlaying(true);
             }
-            document.removeEventListener('click', startOnInteraction);
-            document.removeEventListener('touchstart', startOnInteraction);
-            document.removeEventListener('scroll', startOnInteraction);
+            removeInteractionListeners();
         }
 
-        document.addEventListener('click', startOnInteraction, { once: false });
-        document.addEventListener('touchstart', startOnInteraction, { once: false });
-        document.addEventListener('scroll', startOnInteraction, { once: false });
+        function removeInteractionListeners() {
+            ['click', 'touchstart', 'touchend', 'pointerdown', 'keydown'].forEach(evt => {
+                document.removeEventListener(evt, startOnInteraction);
+            });
+        }
+
+        ['click', 'touchstart', 'touchend', 'pointerdown', 'keydown'].forEach(evt => {
+            document.addEventListener(evt, startOnInteraction, { passive: true });
+        });
 
         // Toggle button
         musicToggle.addEventListener('click', (e) => {
             e.stopPropagation();
+            userPaused = !bgMusic.paused;
             setPlaying(bgMusic.paused);
         });
     }
