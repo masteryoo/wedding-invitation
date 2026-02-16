@@ -67,9 +67,9 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
     --color-text-tertiary:  #AEAEB2;
 
     /* Typography */
-    --font-heading-kr:  'Noto Serif KR', serif;
+    --font-heading-kr:  'Gowun Batang', serif;
     --font-heading-en:  'Cormorant Garamond', serif;
-    --font-body-kr:     'Pretendard Variable', Pretendard, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+    --font-body-kr:     'MaruBuri', 'Apple SD Gothic Neo', serif;
     --font-body-en:     'Montserrat', sans-serif;
 
     --text-hero:    clamp(2.2rem, 6vw, 3.8rem);
