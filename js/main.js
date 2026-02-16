@@ -21,6 +21,50 @@ document.addEventListener('DOMContentLoaded', () => {
     const VENUE_ADDRESS_EN = '40-15 Sinheungan-gil, Seocho District, Seoul';
 
     // ════════════════════════════════════════════════════════
+    // 0. BACKGROUND MUSIC
+    // ════════════════════════════════════════════════════════
+    const bgMusic = document.getElementById('bgMusic');
+    const musicToggle = document.getElementById('musicToggle');
+
+    if (bgMusic && musicToggle) {
+        bgMusic.volume = 0.4;
+
+        function setPlaying(playing) {
+            if (playing) {
+                bgMusic.play().then(() => {
+                    musicToggle.classList.add('is-playing');
+                }).catch(() => {});
+            } else {
+                bgMusic.pause();
+                musicToggle.classList.remove('is-playing');
+            }
+        }
+
+        // Try autoplay
+        setPlaying(true);
+
+        // If browser blocked autoplay, start on first user interaction
+        function startOnInteraction() {
+            if (bgMusic.paused) {
+                setPlaying(true);
+            }
+            document.removeEventListener('click', startOnInteraction);
+            document.removeEventListener('touchstart', startOnInteraction);
+            document.removeEventListener('scroll', startOnInteraction);
+        }
+
+        document.addEventListener('click', startOnInteraction, { once: false });
+        document.addEventListener('touchstart', startOnInteraction, { once: false });
+        document.addEventListener('scroll', startOnInteraction, { once: false });
+
+        // Toggle button
+        musicToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            setPlaying(bgMusic.paused);
+        });
+    }
+
+    // ════════════════════════════════════════════════════════
     // 1. LANGUAGE TOGGLE
     // ════════════════════════════════════════════════════════
     const langToggle = document.getElementById('langToggle');
