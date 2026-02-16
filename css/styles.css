@@ -83,9 +83,9 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
     --space-xs: 0.5rem;
     --space-sm: 1rem;
     --space-md: 2rem;
-    --space-lg: 4rem;
-    --space-xl: 6rem;
-    --space-2xl: 8rem;
+    --space-lg: 3rem;
+    --space-xl: 5rem;
+    --space-2xl: 5rem;
 
     --max-width: 520px;
     --radius-sm: 12px;
@@ -106,7 +106,7 @@ html[data-lang="en"] [lang="ko"] { display: none; }
 
 .section-title {
     text-align: center;
-    margin-bottom: var(--space-lg);
+    margin-bottom: 2rem;
 }
 
 .section-title__kr {
@@ -350,14 +350,14 @@ html[data-lang="en"] [lang="ko"] { display: none; }
     color: rgba(255, 255, 255, 0.7);
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    margin-bottom: var(--space-lg);
+    margin-bottom: 2.5rem;
     text-shadow: 0 1px 8px rgba(0,0,0,0.06);
 }
 
 .hero__photo {
     width: 200px;
     height: 280px;
-    margin: 0 auto calc(var(--space-lg) + 0.5rem);
+    margin: 0 auto 2.5rem;
     border-radius: 160px 160px 24px 24px;
     overflow: hidden;
     box-shadow:
@@ -421,7 +421,7 @@ html[data-lang="en"] [lang="ko"] { display: none; }
     color: rgba(255, 255, 255, 0.55);
     letter-spacing: 0.18em;
     margin-top: 0.35rem;
-    margin-bottom: var(--space-xl);
+    margin-bottom: 3rem;
 }
 
 .hero__scroll-cta { display: inline-block; }
@@ -484,7 +484,7 @@ html[data-lang="en"] [lang="ko"] { display: none; }
     align-items: center;
     justify-content: center;
     gap: 12px;
-    padding: var(--space-md) 0;
+    padding: 0.8rem 0;
     opacity: 0.12;
 }
 
@@ -510,7 +510,7 @@ html[data-lang="en"] [lang="ko"] { display: none; }
 
 .greeting__container { max-width: var(--max-width); margin: 0 auto; }
 
-.greeting__message { text-align: center; margin-bottom: var(--space-lg); }
+.greeting__message { text-align: center; margin-bottom: 2rem; }
 
 .greeting__message p[lang="ko"] {
     font-family: var(--font-body-kr);
@@ -930,7 +930,7 @@ html[data-lang="en"] .greeting__child-name {
    11b. SCHEDULE — warm white
    ---------------------------------------------------------- */
 .schedule {
-    padding: var(--space-2xl) var(--space-md);
+    padding: var(--space-lg) var(--space-md);
     background: var(--surface-warm-white);
 }
 
@@ -1085,7 +1085,7 @@ html[data-lang="en"] .schedule__label {
    13. RSVP — sunset gradient (standout)
    ---------------------------------------------------------- */
 .rsvp {
-    padding: var(--space-2xl) var(--space-md);
+    padding: 6rem var(--space-md) var(--space-2xl);
     background: linear-gradient(
         to bottom,
         #FDF8F0 0%,
@@ -1153,7 +1153,7 @@ html[data-lang="en"] .schedule__label {
    13b. SHARE & CALENDAR
    ---------------------------------------------------------- */
 .share {
-    padding: var(--space-2xl) var(--space-md);
+    padding: var(--space-lg) var(--space-md);
     background: var(--surface-cream);
     text-align: center;
 }
