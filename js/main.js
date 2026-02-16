@@ -308,4 +308,40 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // ════════════════════════════════════════════════════════
+    // 9. IMAGE PROTECTION & ZOOM SNAP-BACK
+    // ════════════════════════════════════════════════════════
+    // Block right-click on images
+    document.addEventListener('contextmenu', (e) => {
+        if (e.target.tagName === 'IMG') e.preventDefault();
+    });
+
+    // Block drag on images
+    document.addEventListener('dragstart', (e) => {
+        if (e.target.tagName === 'IMG') e.preventDefault();
+    });
+
+    // Snap back to normal zoom when user releases pinch
+    if (window.visualViewport) {
+        let zoomTimeout;
+        window.visualViewport.addEventListener('resize', () => {
+            clearTimeout(zoomTimeout);
+            if (window.visualViewport.scale > 1) {
+                zoomTimeout = setTimeout(() => {
+                    if (window.visualViewport.scale > 1) {
+                        document.body.style.transition = 'none';
+                        window.scrollTo({ top: window.scrollY, behavior: 'instant' });
+                        // Reset zoom by toggling viewport meta
+                        const meta = document.querySelector('meta[name="viewport"]');
+                        const original = meta.getAttribute('content');
+                        meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0');
+                        setTimeout(() => {
+                            meta.setAttribute('content', original);
+                        }, 100);
+                    }
+                }, 300);
+            }
+        });
+    }
+
 });
