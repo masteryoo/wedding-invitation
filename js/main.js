@@ -353,7 +353,99 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ════════════════════════════════════════════════════════
-    // 9. IMAGE PROTECTION & ZOOM SNAP-BACK
+    // 9. SHARE & CALENDAR
+    // ════════════════════════════════════════════════════════
+    const INVITE_URL = 'https://masteryoo.github.io/wedding-invitation/?v=3';
+    const EVENT_TITLE = '여승준 ♥ 최은희 결혼식';
+    const EVENT_LOCATION = '헤이스 가든, 서울 서초구 신흥안길 40-15';
+    // May 2, 2026 5:30 PM ~ 8:30 PM KST (UTC+9)
+    const EVENT_START = '20260502T083000Z'; // 5:30 PM KST in UTC
+    const EVENT_END = '20260502T113000Z';   // 8:30 PM KST in UTC
+
+    // Google Calendar
+    const calGoogle = document.getElementById('calGoogle');
+    if (calGoogle) {
+        calGoogle.addEventListener('click', () => {
+            const url = 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+                '&text=' + encodeURIComponent(EVENT_TITLE) +
+                '&dates=' + EVENT_START + '/' + EVENT_END +
+                '&location=' + encodeURIComponent(EVENT_LOCATION) +
+                '&details=' + encodeURIComponent('청첩장: ' + INVITE_URL);
+            window.open(url, '_blank');
+        });
+    }
+
+    // Apple Calendar (.ics download)
+    const calApple = document.getElementById('calApple');
+    if (calApple) {
+        calApple.addEventListener('click', () => {
+            const ics = [
+                'BEGIN:VCALENDAR',
+                'VERSION:2.0',
+                'BEGIN:VEVENT',
+                'DTSTART:' + EVENT_START,
+                'DTEND:' + EVENT_END,
+                'SUMMARY:' + EVENT_TITLE,
+                'LOCATION:' + EVENT_LOCATION,
+                'DESCRIPTION:청첩장: ' + INVITE_URL,
+                'END:VEVENT',
+                'END:VCALENDAR'
+            ].join('\r\n');
+            const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'wedding.ics';
+            link.click();
+            URL.revokeObjectURL(link.href);
+        });
+    }
+
+    // Naver Calendar
+    const calNaver = document.getElementById('calNaver');
+    if (calNaver) {
+        calNaver.addEventListener('click', () => {
+            const url = 'https://calendar.naver.com/calendar/scheduleEntry?title=' +
+                encodeURIComponent(EVENT_TITLE) +
+                '&location=' + encodeURIComponent(EVENT_LOCATION) +
+                '&sdt=20260502T173000' +
+                '&edt=20260502T203000';
+            window.open(url, '_blank');
+        });
+    }
+
+    // KakaoTalk Share (Web Share API with fallback)
+    const shareKakao = document.getElementById('shareKakao');
+    if (shareKakao) {
+        shareKakao.addEventListener('click', () => {
+            if (navigator.share) {
+                navigator.share({
+                    title: '승준 ♥ 은희 결혼식에 초대합니다',
+                    text: '2026년 5월 2일 토요일 오후 5시 30분 — 헤이스 가든',
+                    url: INVITE_URL
+                }).catch(() => {});
+            } else {
+                // Desktop fallback: copy link
+                copyToClipboard(INVITE_URL,
+                    htmlEl.getAttribute('data-lang') === 'en'
+                        ? 'Link copied — paste in KakaoTalk'
+                        : '링크가 복사되었습니다 — 카카오톡에 붙여넣기 해주세요');
+            }
+        });
+    }
+
+    // Copy invitation link
+    const shareCopyLink = document.getElementById('shareCopyLink');
+    if (shareCopyLink) {
+        shareCopyLink.addEventListener('click', () => {
+            copyToClipboard(INVITE_URL,
+                htmlEl.getAttribute('data-lang') === 'en'
+                    ? 'Invitation link copied'
+                    : '청첩장 주소가 복사되었습니다');
+        });
+    }
+
+    // ════════════════════════════════════════════════════════
+    // 10. IMAGE PROTECTION & ZOOM SNAP-BACK
     // ════════════════════════════════════════════════════════
     // Block right-click on images
     document.addEventListener('contextmenu', (e) => {
