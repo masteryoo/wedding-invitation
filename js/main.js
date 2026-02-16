@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const musicToggle = document.getElementById('musicToggle');
 
     if (bgMusic && musicToggle) {
-        bgMusic.volume = 0.4;
+        bgMusic.volume = 0.2;
 
         function setPlaying(playing) {
             if (playing) {
