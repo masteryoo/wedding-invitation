@@ -293,13 +293,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ════════════════════════════════════════════════════════
-    // 7. ACCOUNT COPY BUTTONS
+    // 7. ACCOUNT COPY BUTTONS (encoded for security)
     // ════════════════════════════════════════════════════════
+    const _a = {
+        groom: 'QmFuayBOYW1lIDAwMC0wMDAtMDAwMDAw',
+        bride: 'QmFuayBOYW1lIDAwMC0wMDAtMDAwMDAw'
+    };
     document.querySelectorAll('.accounts__copy-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-            const account = btn.dataset.account;
+            const id = btn.dataset.id;
+            const decoded = atob(_a[id] || '');
             const msg = htmlEl.getAttribute('data-lang') === 'en' ? 'Account number copied' : '계좌번호가 복사되었습니다';
-            copyToClipboard(account, msg);
+            copyToClipboard(decoded, msg);
         });
     });
 

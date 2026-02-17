@@ -1061,11 +1061,6 @@ html[data-lang="en"] .schedule__label {
 .accounts__detail { font-size: var(--text-small); color: var(--color-text-tertiary); }
 .accounts__bank { margin-right: 0.4rem; }
 
-.accounts__number {
-    font-family: var(--font-body-en);
-    letter-spacing: 0.03em;
-    color: var(--color-text-secondary);
-}
 
 .accounts__copy-btn {
     flex-shrink: 0;
