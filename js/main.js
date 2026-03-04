@@ -504,4 +504,71 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ════════════════════════════════════════════════════════
+    // 9. RSVP FORM
+    // ════════════════════════════════════════════════════════
+    const RSVP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwjppoXSfg32b5KXSVLFPqtWRG8u0098-_2WGVITZLioaANpB31TCTYgEgn3yasQ51R/exec';
+
+    const rsvpForm = document.getElementById('rsvpForm');
+    const rsvpSubmit = document.getElementById('rsvpSubmit');
+    const rsvpStatus = document.getElementById('rsvpStatus');
+    const rsvpStatusText = document.getElementById('rsvpStatusText');
+
+    if (rsvpForm) {
+        rsvpForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Basic validation
+            if (!rsvpForm.checkValidity()) {
+                rsvpForm.reportValidity();
+                return;
+            }
+
+            const formData = {
+                name: rsvpForm.name.value.trim(),
+                contact: rsvpForm.contact.value.trim(),
+                guests: rsvpForm.guests.value,
+                attendance: rsvpForm.attendance.value,
+                message: rsvpForm.message.value.trim()
+            };
+
+            // Loading state
+            rsvpSubmit.disabled = true;
+            const origKo = rsvpSubmit.querySelector('[lang="ko"]');
+            const origEn = rsvpSubmit.querySelector('[lang="en"]');
+            const prevKo = origKo ? origKo.textContent : '';
+            const prevEn = origEn ? origEn.textContent : '';
+            if (origKo) origKo.textContent = '전송 중...';
+            if (origEn) origEn.textContent = 'Sending...';
+
+            try {
+                const res = await fetch(RSVP_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                // no-cors means opaque response — treat as success
+                rsvpForm.hidden = true;
+                rsvpStatus.hidden = false;
+                rsvpStatus.classList.remove('rsvp__status--error');
+                const isKo = document.documentElement.lang === 'ko';
+                rsvpStatusText.innerHTML = isKo
+                    ? '감사합니다! 💛<br>참석 여부가 전달되었습니다.'
+                    : 'Thank you! 💛<br>Your RSVP has been submitted.';
+            } catch (err) {
+                rsvpStatus.hidden = false;
+                rsvpStatus.classList.add('rsvp__status--error');
+                const isKo = document.documentElement.lang === 'ko';
+                rsvpStatusText.innerHTML = isKo
+                    ? '전송에 실패했습니다. 다시 시도해 주세요.'
+                    : 'Submission failed. Please try again.';
+                rsvpSubmit.disabled = false;
+                if (origKo) origKo.textContent = prevKo;
+                if (origEn) origEn.textContent = prevEn;
+            }
+        });
+    }
+
 });

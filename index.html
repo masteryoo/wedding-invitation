@@ -544,13 +544,85 @@
                     Please let us know if you'll attend —<br>meals will be prepared per person. (Required)
                 </p>
 
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSebDWv-t1Y-CmrvOGU7FG-zWWdfWLKq6uD9gvn6nbz2-1yAdg/viewform?usp=dialog"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="rsvp__btn reveal">
-                    <span lang="ko">참석 의사 전달하기</span>
-                    <span lang="en">RSVP Now</span>
-                </a>
+                <form class="rsvp__form reveal" id="rsvpForm" novalidate>
+                    <div class="rsvp__field">
+                        <label class="rsvp__label" for="rsvpName">
+                            <span lang="ko">이름</span>
+                            <span lang="en">Name</span>
+                        </label>
+                        <input class="rsvp__input" type="text" id="rsvpName" name="name" required
+                               placeholder="홍길동">
+                    </div>
+
+                    <div class="rsvp__field">
+                        <label class="rsvp__label" for="rsvpContact">
+                            <span lang="ko">연락처 (전화 또는 이메일)</span>
+                            <span lang="en">Phone or Email</span>
+                        </label>
+                        <input class="rsvp__input" type="text" id="rsvpContact" name="contact" required
+                               placeholder="010-0000-0000">
+                    </div>
+
+                    <div class="rsvp__field">
+                        <label class="rsvp__label" for="rsvpGuests">
+                            <span lang="ko">참석 인원</span>
+                            <span lang="en">Number of Guests</span>
+                        </label>
+                        <select class="rsvp__select" id="rsvpGuests" name="guests" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+
+                    <div class="rsvp__field">
+                        <span class="rsvp__label">
+                            <span lang="ko">참석 여부</span>
+                            <span lang="en">Attendance</span>
+                        </span>
+                        <div class="rsvp__radio-group">
+                            <label class="rsvp__radio">
+                                <input type="radio" name="attendance" value="attending" required checked>
+                                <span class="rsvp__radio-label">
+                                    <span lang="ko">참석합니다</span>
+                                    <span lang="en">Will Attend</span>
+                                </span>
+                            </label>
+                            <label class="rsvp__radio">
+                                <input type="radio" name="attendance" value="not_attending">
+                                <span class="rsvp__radio-label">
+                                    <span lang="ko">불참합니다</span>
+                                    <span lang="en">Cannot Attend</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="rsvp__field">
+                        <label class="rsvp__label" for="rsvpMessage">
+                            <span lang="ko">축하 메시지 (선택)</span>
+                            <span lang="en">Message (Optional)</span>
+                        </label>
+                        <textarea class="rsvp__textarea" id="rsvpMessage" name="message" rows="3"
+                                  placeholder="축하의 말씀을 남겨주세요"></textarea>
+                    </div>
+
+                    <button type="submit" class="rsvp__submit" id="rsvpSubmit">
+                        <span lang="ko">참석 의사 전달하기</span>
+                        <span lang="en">Submit RSVP</span>
+                    </button>
+                </form>
+
+                <div class="rsvp__status" id="rsvpStatus" hidden>
+                    <p class="rsvp__status-text" id="rsvpStatusText"></p>
+                </div>
             </div>
         </section>
 
