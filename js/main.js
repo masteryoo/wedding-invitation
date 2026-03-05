@@ -515,6 +515,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const rsvpStatusText = document.getElementById('rsvpStatusText');
 
     if (rsvpForm) {
+        // Check if already submitted (persists across page refresh)
+        if (localStorage.getItem('rsvp_submitted')) {
+            rsvpForm.hidden = true;
+            rsvpStatus.hidden = false;
+            const isKo = document.documentElement.lang === 'ko';
+            rsvpStatusText.innerHTML = isKo
+                ? '이미 참석 여부를 전달해 주셨습니다. 감사합니다! 💛'
+                : 'You have already submitted your RSVP. Thank you! 💛';
+        }
+
         rsvpForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
@@ -550,6 +560,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 // no-cors means opaque response — treat as success
+                localStorage.setItem('rsvp_submitted', '1');
                 rsvpForm.hidden = true;
                 rsvpStatus.hidden = false;
                 rsvpStatus.classList.remove('rsvp__status--error');

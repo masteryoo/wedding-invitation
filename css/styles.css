@@ -12,7 +12,7 @@
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
 body {
-    background-color: #FDF8F0;
+    background-color: #FAFAFA;
     color: var(--color-text-primary);
     font-family: var(--font-body-kr);
     font-size: 16px;
@@ -51,8 +51,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
     --sunset-ocean:       #8BBDD4;
 
     /* Surfaces */
-    --surface-cream:      #FDF8F0;
-    --surface-warm-white: #FFFCF7;
+    --surface-cream:      #FAFAFA;
+    --surface-warm-white: #FFFFFF;
 
     /* Warm palette */
     --color-warm-gold:    #C4A265;
@@ -63,8 +63,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
 
     /* Text hierarchy */
     --color-text-primary:   #1D1D1F;
-    --color-text-secondary: #6E6E73;
-    --color-text-tertiary:  #AEAEB2;
+    --color-text-secondary: #48484A;
+    --color-text-tertiary:  #8E8E93;
 
     /* Typography */
     --font-heading-kr:  'Gowun Batang', serif;
@@ -75,9 +75,9 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
     --text-hero:    clamp(2.2rem, 6vw, 3.8rem);
     --text-h2:      clamp(1.5rem, 3.5vw, 2.2rem);
     --text-h3:      clamp(1.1rem, 1.8vw, 1.35rem);
-    --text-body:    clamp(0.9rem, 1.1vw, 1rem);
-    --text-small:   clamp(0.8rem, 0.95vw, 0.9rem);
-    --text-caption: clamp(0.72rem, 0.8vw, 0.8rem);
+    --text-body:    clamp(0.95rem, 1.2vw, 1.05rem);
+    --text-small:   clamp(0.85rem, 1vw, 0.95rem);
+    --text-caption: clamp(0.75rem, 0.85vw, 0.85rem);
 
     /* Spacing */
     --space-xs: 0.5rem;
@@ -995,6 +995,15 @@ html[data-lang="en"] .schedule__label {
     letter-spacing: 0.12em;
 }
 
+.schedule__note {
+    margin-top: var(--space-md);
+    font-size: var(--text-body);
+    font-weight: 300;
+    color: var(--color-text-secondary);
+    line-height: 1.9;
+    text-align: center;
+}
+
 /* ----------------------------------------------------------
    12. ACCOUNTS — warm white
    ---------------------------------------------------------- */
@@ -1080,31 +1089,9 @@ html[data-lang="en"] .schedule__label {
    13. RSVP — sunset gradient (standout)
    ---------------------------------------------------------- */
 .rsvp {
-    padding: 6rem var(--space-md) var(--space-2xl);
-    background: linear-gradient(
-        to bottom,
-        #FDF8F0 0%,
-        #F7F0E6 30%,
-        #FDCFB4 70%,
-        #F4A683 100%
-    );
+    padding: var(--space-2xl) var(--space-md);
+    background: var(--surface-cream);
     text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Golden glow at bottom */
-.rsvp::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 600px;
-    height: 300px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(240, 199, 94, 0.2) 0%, transparent 60%);
-    pointer-events: none;
 }
 
 .rsvp__container { max-width: var(--max-width); margin: 0 auto; position: relative; z-index: 1; }
