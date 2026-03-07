@@ -103,6 +103,15 @@ html[data-lang="en"] [lang="ko"] { display: none; }
    4. TYPOGRAPHY
    ---------------------------------------------------------- */
 [lang="en"] { font-family: var(--font-body-en); }
+html[data-lang="en"] { font-weight: 400; }
+html[data-lang="en"] .greeting__message,
+html[data-lang="en"] .rsvp__message,
+html[data-lang="en"] .accounts__message,
+html[data-lang="en"] .schedule__note,
+html[data-lang="en"] .location__transport-panel {
+    font-weight: 400;
+    color: var(--color-text-primary);
+}
 
 .section-title {
     text-align: center;
