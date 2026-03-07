@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const WEDDING_DATE = new Date(2026, 4, 2, 17, 30, 0); // May 2, 2026 5:30 PM
     const VENUE_ADDRESS = '서울 서초구 신흥안길 40-15';
     const VENUE_ADDRESS_EN = '40-15 Sinheungan-gil, Seocho District, Seoul';
+    const RSVP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwjppoXSfg32b5KXSVLFPqtWRG8u0098-_2WGVITZLioaANpB31TCTYgEgn3yasQ51R/exec';
 
     // ════════════════════════════════════════════════════════
     // 0. BACKGROUND MUSIC
@@ -519,8 +520,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ════════════════════════════════════════════════════════
     // 9. RSVP FORM
     // ════════════════════════════════════════════════════════
-    const RSVP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwjppoXSfg32b5KXSVLFPqtWRG8u0098-_2WGVITZLioaANpB31TCTYgEgn3yasQ51R/exec';
-
     const rsvpForm = document.getElementById('rsvpForm');
     const rsvpSubmit = document.getElementById('rsvpSubmit');
     const rsvpStatus = document.getElementById('rsvpStatus');
