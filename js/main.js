@@ -77,6 +77,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const langToggle = document.getElementById('langToggle');
     const htmlEl = document.documentElement;
 
+    // Auto-detect language from URL param (?lang=en)
+    const urlLang = new URLSearchParams(window.location.search).get('lang');
+    if (urlLang === 'en') {
+        htmlEl.setAttribute('data-lang', 'en');
+        htmlEl.setAttribute('lang', 'en');
+        const label = langToggle?.querySelector('.lang-toggle__label');
+        if (label) label.textContent = label.getAttribute('data-en');
+    }
+
     if (langToggle) {
         langToggle.addEventListener('click', () => {
             const current = htmlEl.getAttribute('data-lang');
