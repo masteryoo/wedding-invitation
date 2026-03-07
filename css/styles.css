@@ -364,17 +364,17 @@ html[data-lang="en"] .location__transport-panel {
 }
 
 .hero__photo {
-    width: 260px;
-    height: 360px;
+    width: 290px;
+    height: 390px;
     margin: 0 auto 2.5rem;
-    border-radius: 180px 180px 24px 24px;
+    border-radius: 160px 160px 24px 24px;
     overflow: hidden;
     box-shadow:
         0 24px 48px rgba(29, 29, 31, 0.12),
         0 8px 16px rgba(29, 29, 31, 0.08);
 }
 
-.hero__photo img { width: 100%; height: 100%; object-fit: cover; }
+.hero__photo img { width: 100%; height: 100%; object-fit: cover; image-rendering: -webkit-optimize-contrast; }
 
 .hero__names { margin-bottom: var(--space-sm); }
 
@@ -1453,7 +1453,7 @@ body { animation: pageLoad 0.8s ease-out; }
    16. RESPONSIVE
    ---------------------------------------------------------- */
 @media (min-width: 520px) {
-    .hero__photo { width: 300px; height: 410px; }
+    .hero__photo { width: 350px; height: 460px; }
     .gallery__slide--portrait { width: 320px; height: 440px; }
     .gallery__slide--wide { width: 400px; height: 300px; }
     .location__map { height: 320px; }

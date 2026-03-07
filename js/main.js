@@ -382,7 +382,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ════════════════════════════════════════════════════════
     // 9. SHARE & CALENDAR
     // ════════════════════════════════════════════════════════
-    const INVITE_URL = 'https://masteryoo.github.io/wedding-invitation/?v=17';
+    const INVITE_URL = 'https://masteryoo.github.io/wedding-invitation/?v=18';
     const EVENT_TITLE = '여승준 ♥ 최은희 결혼식';
     const EVENT_LOCATION = '헤이스 가든, 서울 서초구 신흥안길 40-15';
     // May 2, 2026 5:30 PM ~ 8:30 PM KST (UTC+9)
