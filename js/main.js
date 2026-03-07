@@ -294,30 +294,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ════════════════════════════════════════════════════════
-    // 7. ACCOUNT COPY BUTTONS (fetched from Apps Script)
+    // 7. ACCOUNT COPY BUTTONS (prefetched from Apps Script)
     // ════════════════════════════════════════════════════════
+    let _accounts = null;
+    fetch(RSVP_SCRIPT_URL)
+        .then(r => r.json())
+        .then(d => { if (d.result === 'success') _accounts = d.accounts; })
+        .catch(() => {});
+
     document.querySelectorAll('.accounts__copy-btn').forEach(btn => {
-        btn.addEventListener('click', async () => {
+        btn.addEventListener('click', () => {
             const id = btn.dataset.id;
-            const origText = btn.textContent;
-            btn.disabled = true;
-            btn.textContent = '...';
-
-            try {
-                const res = await fetch(RSVP_SCRIPT_URL + '?id=' + encodeURIComponent(id));
-                const data = await res.json();
-                if (data.result === 'success' && data.info) {
-                    const isKo = htmlEl.getAttribute('data-lang') === 'ko';
-                    copyToClipboard(data.info, isKo ? '복사되었습니다' : 'Copied!');
-                } else {
-                    showToast('정보를 불러올 수 없습니다');
-                }
-            } catch (err) {
-                showToast('정보를 불러올 수 없습니다');
+            if (_accounts && _accounts[id]) {
+                const isKo = htmlEl.getAttribute('data-lang') === 'ko';
+                copyToClipboard(_accounts[id], isKo ? '복사되었습니다' : 'Copied!');
+            } else {
+                const isKo = htmlEl.getAttribute('data-lang') === 'ko';
+                showToast(isKo ? '잠시 후 다시 시도해 주세요' : 'Please try again shortly');
             }
-
-            btn.disabled = false;
-            btn.textContent = origText;
         });
     });
 
