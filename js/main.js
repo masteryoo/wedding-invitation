@@ -293,18 +293,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ════════════════════════════════════════════════════════
-    // 7. ACCOUNT COPY BUTTONS (encoded for security)
+    // 7. ACCOUNT COPY BUTTONS (fetched from Apps Script)
     // ════════════════════════════════════════════════════════
-    const _a = {
-        groom: 'QmFuayBOYW1lIDAwMC0wMDAtMDAwMDAw',
-        bride: 'QmFuayBOYW1lIDAwMC0wMDAtMDAwMDAw'
-    };
     document.querySelectorAll('.accounts__copy-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', async () => {
             const id = btn.dataset.id;
-            const decoded = atob(_a[id] || '');
-            const msg = htmlEl.getAttribute('data-lang') === 'en' ? 'Account number copied' : '계좌번호가 복사되었습니다';
-            copyToClipboard(decoded, msg);
+            const origText = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = '...';
+
+            try {
+                const res = await fetch(RSVP_SCRIPT_URL + '?id=' + encodeURIComponent(id));
+                const data = await res.json();
+                if (data.result === 'success' && data.info) {
+                    const isKo = htmlEl.getAttribute('data-lang') === 'ko';
+                    copyToClipboard(data.info, isKo ? '복사되었습니다' : 'Copied!');
+                } else {
+                    showToast('정보를 불러올 수 없습니다');
+                }
+            } catch (err) {
+                showToast('정보를 불러올 수 없습니다');
+            }
+
+            btn.disabled = false;
+            btn.textContent = origText;
         });
     });
 

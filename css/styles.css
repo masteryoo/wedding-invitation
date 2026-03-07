@@ -1067,6 +1067,13 @@ html[data-lang="en"] .schedule__label {
     margin-left: 0.3rem;
 }
 
+.accounts__holder-sub {
+    font-size: var(--text-small);
+    color: var(--color-text-tertiary);
+    font-weight: 300;
+    margin-left: 0.3rem;
+}
+
 .accounts__detail { font-size: var(--text-small); color: var(--color-text-tertiary); }
 .accounts__bank { margin-right: 0.4rem; }
 
