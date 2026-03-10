@@ -113,6 +113,7 @@ html[data-lang="en"] .schedule__note,
 html[data-lang="en"] .location__transport-panel {
     font-weight: 400;
     color: var(--color-text-primary);
+    text-wrap: pretty;
 }
 
 .section-title {
