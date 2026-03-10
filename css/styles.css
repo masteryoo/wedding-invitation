@@ -20,6 +20,8 @@ body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    word-break: keep-all;
+    overflow-wrap: break-word;
 }
 
 img {
@@ -1011,6 +1013,8 @@ html[data-lang="en"] .schedule__label {
     color: var(--color-text-secondary);
     line-height: 1.9;
     text-align: center;
+    word-break: keep-all;
+    overflow-wrap: break-word;
 }
 
 /* ----------------------------------------------------------
