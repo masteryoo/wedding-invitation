@@ -1018,6 +1018,14 @@ html[data-lang="en"] .schedule__label {
     overflow-wrap: break-word;
 }
 
+.schedule__note-line {
+    margin: 0.2em 0;
+}
+
+.schedule__note-gap {
+    margin-top: 1.2em;
+}
+
 /* ----------------------------------------------------------
    12. ACCOUNTS — warm white
    ---------------------------------------------------------- */
