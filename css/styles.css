@@ -898,6 +898,9 @@ html[data-lang="en"] .greeting__child-name {
 
 .location__transport-panel.is-active { display: block; }
 
+.location__transport-panel .location__transport-block { margin-top: 1.2rem; }
+.location__transport-panel .nowrap { white-space: nowrap; }
+
 .location__transport-panel p[lang="en"] {
     font-size: var(--text-small);
     color: var(--color-text-secondary);
@@ -936,6 +939,19 @@ html[data-lang="en"] .greeting__child-name {
     font-size: var(--text-caption);
     margin-top: 0.6rem;
     border-radius: 8px;
+}
+
+.location__map-image {
+    margin: var(--space-md) 0 0;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.location__map-image img {
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
 /* ----------------------------------------------------------
@@ -1486,4 +1502,167 @@ body { animation: pageLoad 0.8s ease-out; }
     }
     .greeting__parents { flex-direction: row; }
     .greeting__side { flex: 1; }
+}
+
+/* ----------------------------------------------------------
+   17. PRINT STYLES
+   Only active when printing (Ctrl+P → Save as PDF).
+   Does NOT affect the live website in any way.
+   ---------------------------------------------------------- */
+@media print {
+    /* --- Korean only --- */
+    [lang="en"] { display: none !important; }
+    [lang="ko"] { display: revert !important; }
+
+    /* --- Hide interactive / non-printable elements --- */
+    .music-toggle,
+    .lang-toggle,
+    .hero__scroll-cta,
+    .hero__palm,
+    .wave-transition,
+    .petals,
+    .section-divider,
+    .rsvp,
+    .share,
+    .gallery__nav,
+    .gallery__dots,
+    .gallery__counter,
+    .location__copy-btn,
+    .accounts__copy-btn,
+    .location__map-btn,
+    .location__transport-tabs { display: none !important; }
+
+    /* --- Force light backgrounds & readable text --- */
+    body { background: #fff; margin: 0; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+    .hero {
+        background: #fff !important;
+        color: var(--color-text-primary) !important;
+        min-height: auto !important;
+        padding: 2rem 1rem !important;
+    }
+    .hero__date,
+    .hero__names,
+    .hero__name-kr,
+    .hero__tagline { color: var(--color-text-primary) !important; }
+    .hero__amp,
+    .hero__divider { color: var(--color-text-secondary) !important; }
+
+    section, .accounts, .schedule, .greeting, .calendar, .location, .gallery {
+        background: #fff !important;
+        padding: 1.5rem 1rem !important;
+    }
+
+    /* --- Hero photo --- */
+    .hero__photo {
+        box-shadow: none;
+        border: 1px solid #eee;
+    }
+
+    /* --- Gallery: grid of thumbnails --- */
+    .gallery__viewport {
+        overflow: visible !important;
+        position: static !important;
+    }
+    .gallery__track {
+        display: grid !important;
+        grid-template-columns: repeat(5, 1fr) !important;
+        gap: 6px !important;
+        overflow: visible !important;
+        scroll-snap-type: none !important;
+        padding: 0 !important;
+        height: auto !important;
+        width: 100% !important;
+    }
+    .gallery__slide,
+    .gallery__slide--portrait,
+    .gallery__slide--wide {
+        width: auto !important;
+        height: 120px !important;
+        scroll-snap-align: unset !important;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    .gallery__slide img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover;
+        pointer-events: auto;
+    }
+
+    /* --- Location: show ALL transport panels with clear labels --- */
+    .location__transport-panel { display: block !important; }
+
+    .location__transport-panel[data-panel="subway"]::before {
+        content: "🚇 지하철";
+        display: block;
+        font-weight: 700;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.4rem;
+        border-bottom: 2px solid var(--color-text-primary);
+    }
+    .location__transport-panel[data-panel="bus"]::before {
+        content: "🚌 버스";
+        display: block;
+        font-weight: 700;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.4rem;
+        border-bottom: 2px solid var(--color-text-primary);
+    }
+    .location__transport-panel[data-panel="car"]::before {
+        content: "🚗 자가용";
+        display: block;
+        font-weight: 700;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.4rem;
+        border-bottom: 2px solid var(--color-text-primary);
+    }
+
+    .location__transport-panel + .location__transport-panel {
+        margin-top: 1.5rem;
+    }
+
+    /* --- Map image --- */
+    .location__map-image img { pointer-events: auto; }
+    .location__map-image {
+        max-width: 80%;
+        margin: 0.8rem auto 0;
+    }
+
+    /* --- Accounts: show Korean groups --- */
+    .accounts__group[lang="ko"] { display: block !important; }
+
+    /* --- Page layout strategy ---
+       Page 1: Hero + Greeting
+       Page 2: Calendar + Schedule
+       Page 3: Gallery (thumbnails)
+       Page 4: Location (subway + bus + car + map)
+       Page 5: Accounts + Footer
+    --- */
+    .calendar  { page-break-before: always; }
+    .gallery   { page-break-before: always; }
+    .location  { page-break-before: always; }
+    .accounts  { page-break-before: always; }
+
+    /* Keep each section together on its page */
+    .greeting,
+    .calendar,
+    .schedule,
+    .accounts,
+    .footer { page-break-inside: avoid; }
+
+    /* --- Footer --- */
+    .footer {
+        background: #fff !important;
+        color: var(--color-text-primary) !important;
+        padding: 1.5rem 1rem !important;
+    }
+
+    /* --- Misc cleanup --- */
+    .reveal { opacity: 1 !important; transform: none !important; }
+    a { text-decoration: none; }
 }
