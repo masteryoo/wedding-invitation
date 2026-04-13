@@ -954,8 +954,8 @@ html[data-lang="en"] .greeting__child-name {
     height: auto;
 }
 
-.location__wreath-notice {
-    margin-top: var(--space-md);
+.accounts__wreath-notice {
+    margin-top: var(--space-sm);
     font-size: var(--text-small);
     color: var(--color-text-secondary);
     text-align: center;
